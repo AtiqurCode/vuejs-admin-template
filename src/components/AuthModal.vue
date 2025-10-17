@@ -4,7 +4,7 @@
       <q-card-section>
         <div class="text-h5 text-weight-bold text-center q-mb-md">
           <q-icon name="dashboard" class="q-mr-sm text-primary" size="md" />
-          Modern Dashboard
+          Dashboard
         </div>
         <div class="text-h6 text-center">{{ isLogin ? 'Welcome Back' : 'Create Account' }}</div>
         <div class="text-subtitle2 text-grey-6">
