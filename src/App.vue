@@ -705,7 +705,7 @@ onMounted(() => {
   
   $q.notify({
     type: 'positive',
-    message: 'Welcome to Modern Dashboard! 🚀',
+    message: 'Welcome to Dashboard! 🚀',
     timeout: 3000
   })
 
