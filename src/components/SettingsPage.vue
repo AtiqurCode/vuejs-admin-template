@@ -5,7 +5,7 @@
       <div class="row items-center justify-between">
         <div>
           <div class="text-h4 text-weight-bold q-mb-sm text-white">
-            <q-icon name="settings" class="q-mr-sm" style="color: #667eea;" />
+            <q-icon name="settings" class="q-mr-sm" />
             Settings
           </div>
           <div class="text-subtitle1 text-white" style="opacity: 0.8;">
