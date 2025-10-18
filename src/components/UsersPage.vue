@@ -8,7 +8,7 @@
             <q-icon name="people" class="q-mr-sm page-title-icon" />
             User Management
           </div>
-          <div class="text-subtitle1 text-white page-subtitle">
+          <div class="text-såubtitle1 text-white page-subtitle">
             Manage and organize your users efficiently with advanced tools
           </div>
         </div>
