@@ -1243,7 +1243,7 @@ onMounted(() => {
 }
 
 .page-title-icon {
-  color: #667eea;
+  color: white;
   background: rgba(102, 126, 234, 0.1);
   padding: 8px;
   border-radius: 12px;

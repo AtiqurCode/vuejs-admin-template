@@ -1,0 +1,1 @@
+{"root":["./src/main.ts","./src/vite-env.d.ts","./src/composables/useNotifications.ts","./src/lib/supabase.ts","./src/App.vue","./src/components/AuthModal.vue","./src/components/HelloWorld.vue","./src/components/NotificationCenter.vue","./src/components/ReportsPage.vue","./src/components/SettingsPage.vue","./src/components/UsersPage.vue"],"errors":true,"version":"5.8.3"}
