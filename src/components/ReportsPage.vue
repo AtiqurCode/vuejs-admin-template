@@ -39,7 +39,7 @@
             <div class="row items-center no-wrap">
               <div class="col">
                 <div class="stat-value text-h4">{{ metric.value }}</div>
-                <div class="text-subtitle2 text-weight-medium q-mt-xs" style="color: #4a5568;">{{ metric.title }}</div>
+                <div class="text-subtitle2 text-weight-medium q-mt-xs" style="color: var(--text-dark);">{{ metric.title }}</div>
                 <div class="text-caption q-mt-xs" :class="metric.trend === 'up' ? 'text-positive' : 'text-negative'">
                   <q-icon :name="metric.trend === 'up' ? 'trending_up' : 'trending_down'" class="q-mr-xs" />
                   {{ metric.change }}

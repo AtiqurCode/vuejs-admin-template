@@ -39,7 +39,7 @@
             <div class="row items-center no-wrap">
               <div class="col">
                 <div class="stat-value text-h4">{{ stat.value }}</div>
-                <div class="text-subtitle2 text-weight-medium q-mt-xs" style="color: #4a5568;">{{ stat.title }}</div>
+                <div class="text-subtitle2 text-weight-medium q-mt-xs" style="color: var(--text-dark);">{{ stat.title }}</div>
                 <div class="text-caption q-mt-xs" :class="stat.trend === 'up' ? 'text-positive' : 'text-negative'">
                   <q-icon :name="stat.trend === 'up' ? 'trending_up' : 'trending_down'" class="q-mr-xs" />
                   {{ stat.change }}
