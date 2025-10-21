@@ -18,7 +18,7 @@
           />
 
           <q-toolbar-title class="header-title">
-            <div class="row items-center">
+            <div class="row items-start">
               <q-icon name="dashboard" class="q-mr-sm" size="md" />
               <span class="text-h5 text-weight-bold">Dashboard</span>
             </div>
