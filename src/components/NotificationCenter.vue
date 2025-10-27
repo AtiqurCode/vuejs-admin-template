@@ -5,7 +5,7 @@
       dense
       round
       icon="notifications"
-      color="white"
+      color="dark"
       class="notification-btn"
       @click="toggleNotifications"
     >

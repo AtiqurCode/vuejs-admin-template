@@ -11,13 +11,13 @@
             dense
             round
             icon="menu"
-            color="white"
+            color="dark"
             aria-label="Menu"
             @click="toggleLeftDrawer"
             class="q-mr-md"
           />
 
-          <q-toolbar-title class="header-title">
+          <q-toolbar-title class="header-title text-primary">
             <div class="row items-start">
               <q-icon name="dashboard" class="q-mr-sm" size="md" />
               <span class="text-h5 text-weight-bold">Dashboard</span>
@@ -32,7 +32,7 @@
               dense
               round
               icon="send"
-              color="white"
+              color="dark"
               aria-label="Send notification"
               @click="showSendNotificationDialog = true"
               class="modern-btn"
@@ -43,7 +43,7 @@
               flat
               dense
               round
-              color="white"
+              color="dark"
               class="modern-btn"
               @before-show="checkAuthBeforeShow"
             >
@@ -87,7 +87,6 @@
         
         <q-list class="q-px-md">
           <q-item-label header class="text-weight-medium q-mb-md">
-            <q-icon name="menu" class="q-mr-sm" />
             Main Menu
           </q-item-label>
 

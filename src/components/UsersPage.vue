@@ -4,11 +4,11 @@
     <div class="page-header q-mb-lg">
       <div class="row items-center justify-between">
         <div>
-          <div class="text-h4 text-weight-bold q-mb-sm text-white">
+          <div class="text-h4 text-weight-bold q-mb-sm">
             <q-icon name="people" class="q-mr-sm page-title-icon" />
             User Management
           </div>
-          <div class="text-såubtitle1 text-white page-subtitle">
+          <div class="text-såubtitle1 page-subtitle">
             Manage and organize your users efficiently with advanced tools
           </div>
         </div>
@@ -136,7 +136,7 @@
     <q-card class="content-card">
       <q-card-section>
         <div class="row items-center justify-between q-mb-md">
-          <div class="text-h5 text-weight-bold text-white">
+          <div class="text-h5 text-weight-bold">
             <q-icon name="group" class="q-mr-sm text-primary" />
             All Users ({{ filteredUsers.length }})
           </div>
@@ -1240,17 +1240,27 @@ onMounted(() => {
 
 .page-header {
   animation: fadeInUp 0.6s ease-out;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .page-title-icon {
   color: white;
-  background: rgba(30, 64, 175, 0.1);
+  background: var(--primary-color);
   padding: 8px;
   border-radius: 12px;
 }
 
+.page-header .text-h4 {
+  color: var(--text-dark);
+}
+
 .page-subtitle {
-  opacity: 0.8;
+  color: var(--text-light);
+  opacity: 1;
 }
 
 .stat-card {

@@ -4,11 +4,11 @@
     <div class="page-header q-mb-lg">
       <div class="row items-center justify-between">
         <div>
-          <div class="text-h4 text-weight-bold q-mb-sm text-white">
+          <div class="text-h4 text-weight-bold q-mb-sm">
             <q-icon name="assessment" class="q-mr-sm page-title-icon" />
             Reports & Analytics
           </div>
-          <div class="text-subtitle1 text-white page-subtitle">
+          <div class="text-subtitle1 page-subtitle">
             Comprehensive insights and data analytics for your dashboard
           </div>
         </div>
@@ -468,17 +468,27 @@ const generateQuickReport = (report: any) => {
 
 .page-header {
   animation: fadeInUp 0.6s ease-out;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .page-title-icon {
   color: white;
-  background: rgba(30, 64, 175, 0.1);
+  background: var(--primary-color);
   padding: 8px;
   border-radius: 12px;
 }
 
+.page-header .text-h4 {
+  color: var(--text-dark);
+}
+
 .page-subtitle {
-  opacity: 0.8;
+  color: var(--text-light);
+  opacity: 1;
 }
 
 .chart-container {

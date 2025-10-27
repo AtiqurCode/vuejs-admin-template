@@ -4,11 +4,11 @@
     <div class="page-header q-mb-lg">
       <div class="row items-center justify-between">
         <div>
-          <div class="text-h4 text-weight-bold q-mb-sm text-white">
+          <div class="text-h4 text-weight-bold q-mb-sm">
             <q-icon name="settings" class="q-mr-sm" />
             Settings
           </div>
-          <div class="text-subtitle1 text-white" style="opacity: 0.8;">
+          <div class="text-subtitle1" style="opacity: 0.8;">
             Manage your account preferences and application settings
           </div>
         </div>
@@ -530,6 +530,26 @@ onMounted(() => {
 
 .page-header {
   animation: fadeInUp 0.6s ease-out;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.page-header .text-h4 {
+  color: var(--text-dark);
+}
+
+.page-header .text-subtitle1 {
+  color: var(--text-light);
+}
+
+.page-title-icon {
+  color: white;
+  background: var(--primary-color);
+  padding: 8px;
+  border-radius: 12px;
 }
 
 .profile-picture-section {
