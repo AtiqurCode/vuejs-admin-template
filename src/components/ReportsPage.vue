@@ -472,7 +472,7 @@ const generateQuickReport = (report: any) => {
 
 .page-title-icon {
   color: white;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(30, 64, 175, 0.1);
   padding: 8px;
   border-radius: 12px;
 }
@@ -486,9 +486,9 @@ const generateQuickReport = (report: any) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(102, 126, 234, 0.05);
+  background: rgba(30, 64, 175, 0.05);
   border-radius: 16px;
-  border: 2px dashed rgba(102, 126, 234, 0.2);
+  border: 2px dashed rgba(30, 64, 175, 0.2);
 }
 
 .chart-placeholder {

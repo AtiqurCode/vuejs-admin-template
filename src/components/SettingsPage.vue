@@ -539,12 +539,12 @@ onMounted(() => {
 }
 
 .profile-avatar {
-  border: 4px solid rgba(102, 126, 234, 0.2);
+  border: 4px solid rgba(30, 64, 175, 0.2);
   transition: all 0.3s ease;
 }
 
 .profile-avatar:hover {
-  border-color: rgba(102, 126, 234, 0.4);
+  border-color: rgba(30, 64, 175, 0.4);
   transform: scale(1.05);
 }
 

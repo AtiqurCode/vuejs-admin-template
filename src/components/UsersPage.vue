@@ -46,8 +46,8 @@
                 </div>
               </div>
               <div class="col-auto">
-                <div class="stat-icon" :style="`background: ${stat.gradient}`">
-                  <q-icon :name="stat.icon" size="1.5rem" />
+                <div class="stat-icon" :style="`background: ${stat.color}; opacity: 0.9;`">
+                  <q-icon :name="stat.icon" size="1.5rem" color="white" />
                 </div>
               </div>
             </div>
@@ -819,7 +819,7 @@ const userStats = [
     icon: 'people', 
     change: '+12.5%', 
     trend: 'up',
-    gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    color: '#1e40af',
     filter: 'all'
   },
   { 
@@ -828,7 +828,7 @@ const userStats = [
     icon: 'online_prediction', 
     change: '+8.2%', 
     trend: 'up',
-    gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+    color: '#0ea5e9',
     filter: 'active'
   },
   { 
@@ -837,7 +837,7 @@ const userStats = [
     icon: 'person_add', 
     change: '+23.1%', 
     trend: 'up',
-    gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+    color: '#059669',
     filter: 'new'
   },
   { 
@@ -846,7 +846,7 @@ const userStats = [
     icon: 'pending', 
     change: '+2', 
     trend: 'up',
-    gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+    color: '#d97706',
     filter: 'pending'
   }
 ]
@@ -1244,7 +1244,7 @@ onMounted(() => {
 
 .page-title-icon {
   color: white;
-  background: rgba(102, 126, 234, 0.1);
+  background: rgba(30, 64, 175, 0.1);
   padding: 8px;
   border-radius: 12px;
 }
@@ -1264,12 +1264,12 @@ onMounted(() => {
 }
 
 .user-avatar {
-  border: 3px solid rgba(102, 126, 234, 0.2);
+  border: 3px solid rgba(30, 64, 175, 0.2);
   transition: all 0.3s ease;
 }
 
 .user-avatar:hover {
-  border-color: rgba(102, 126, 234, 0.4);
+  border-color: rgba(30, 64, 175, 0.4);
   transform: scale(1.05);
 }
 
@@ -1282,13 +1282,13 @@ onMounted(() => {
 .user-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 1px solid rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(30, 64, 175, 0.1);
 }
 
 .user-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(102, 126, 234, 0.3);
+  border-color: rgba(30, 64, 175, 0.3);
 }
 
 .add-user-card {
@@ -1304,12 +1304,12 @@ onMounted(() => {
 }
 
 .profile-avatar {
-  border: 4px solid rgba(102, 126, 234, 0.2);
+  border: 4px solid rgba(30, 64, 175, 0.2);
   transition: all 0.3s ease;
 }
 
 .profile-avatar:hover {
-  border-color: rgba(102, 126, 234, 0.4);
+  border-color: rgba(30, 64, 175, 0.4);
   transform: scale(1.05);
 }
 

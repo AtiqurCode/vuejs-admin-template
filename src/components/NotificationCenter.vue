@@ -225,12 +225,12 @@ const getNotificationColor = (type: string) => {
 }
 
 .notification-item.unread {
-  border-left: 4px solid #667eea;
-  background: rgba(102, 126, 234, 0.1);
+  border-left: 4px solid var(--primary-color);
+  background: rgba(30, 64, 175, 0.1);
 }
 
 .notification-item.unread:hover {
-  background: rgba(102, 126, 234, 0.15);
+  background: rgba(30, 64, 175, 0.15);
 }
 
 .notification-unread-badge {
@@ -244,8 +244,8 @@ const getNotificationColor = (type: string) => {
 
 .notification-delete-btn:hover {
   opacity: 1;
-  background: rgba(244, 67, 54, 0.1);
-  color: #f44336;
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--error-color);
 }
 
 @keyframes pulse {
@@ -265,12 +265,12 @@ const getNotificationColor = (type: string) => {
 }
 
 .q-card-section::-webkit-scrollbar-thumb {
-  background: rgba(102, 126, 234, 0.3);
+  background: rgba(30, 64, 175, 0.3);
   border-radius: 10px;
   transition: all 0.3s ease;
 }
 
 .q-card-section::-webkit-scrollbar-thumb:hover {
-  background: rgba(102, 126, 234, 0.5);
+  background: rgba(30, 64, 175, 0.5);
 }
 </style>
