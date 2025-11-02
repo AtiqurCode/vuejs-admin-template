@@ -468,27 +468,6 @@ const generateQuickReport = (report: any) => {
 
 .page-header {
   animation: fadeInUp 0.6s ease-out;
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.page-title-icon {
-  color: white;
-  background: var(--primary-color);
-  padding: 8px;
-  border-radius: 12px;
-}
-
-.page-header .text-h4 {
-  color: var(--text-dark);
-}
-
-.page-subtitle {
-  color: var(--text-light);
-  opacity: 1;
 }
 
 .chart-container {
@@ -496,9 +475,15 @@ const generateQuickReport = (report: any) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(30, 64, 175, 0.05);
+  background: rgba(30, 64, 175, 0.03);
   border-radius: 16px;
-  border: 2px dashed rgba(30, 64, 175, 0.2);
+  border: 2px dashed rgba(30, 64, 175, 0.15);
+  transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+  background: rgba(30, 64, 175, 0.05);
+  border-color: rgba(30, 64, 175, 0.25);
 }
 
 .chart-placeholder {
@@ -506,8 +491,42 @@ const generateQuickReport = (report: any) => {
   padding: 40px;
 }
 
+.chart-placeholder .text-h6 {
+  color: var(--text-dark) !important;
+}
+
+.chart-placeholder .text-body2 {
+  color: var(--text-light) !important;
+}
+
+/* Top Performers List Styling */
+.q-list .q-item-label {
+  color: var(--text-dark) !important;
+}
+
+.q-list .q-item-label.caption {
+  color: var(--text-light) !important;
+}
+
+/* Engagement Table Enhancements */
+.modern-table .q-table tbody td .text-body2 {
+  color: var(--text-dark) !important;
+}
+
+.modern-table .q-table tbody td .text-caption {
+  color: var(--text-light) !important;
+}
+
 .health-item {
   padding: 8px 0;
+}
+
+.health-item .text-weight-medium {
+  color: var(--text-dark) !important;
+}
+
+.health-item .text-caption {
+  color: var(--text-light) !important;
 }
 
 .modern-btn-toggle {

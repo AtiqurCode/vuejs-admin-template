@@ -8,7 +8,7 @@
             <q-icon name="people" class="q-mr-sm page-title-icon" />
             User Management
           </div>
-          <div class="text-såubtitle1 page-subtitle">
+          <div class="text-subtitle1 page-subtitle">
             Manage and organize your users efficiently with advanced tools
           </div>
         </div>
@@ -187,6 +187,9 @@
           selection="multiple"
           v-model:selected="selectedUsers"
           :rows-per-page-options="[10, 25, 50, 100]"
+          :rows-per-page-label="'Rows per page:'"
+          binary-state-sort
+          :loading="false"
         >
           <template v-slot:body-cell-avatar="props">
             <q-td :props="props">
@@ -738,7 +741,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useQuasar } from 'quasar'
 
 const $q = useQuasar()
@@ -757,7 +760,7 @@ const selectedUsers = ref([])
 const addUserStep = ref(1)
 const userDetailTab = ref('details')
 
-// Pagination
+// Pagination - initialized after users are defined
 const tablePagination = ref({
   sortBy: 'name',
   descending: false,
@@ -955,6 +958,210 @@ const users = ref([
     location: 'Boston, USA',
     avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150',
     permissions: ['read_users', 'write_users']
+  },
+  { 
+    id: 7, 
+    name: 'Michael Chen', 
+    email: 'michael.chen@example.com', 
+    role: 'Developer', 
+    department: 'IT', 
+    status: 'Active',
+    joinDate: 'Jul 3, 2023',
+    lastActive: 'Today, 1:20 PM',
+    lastActiveDate: new Date(Date.now() - 5400000),
+    phone: '+1 (555) 789-0123',
+    location: 'San Francisco, USA',
+    avatar: 'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_reports']
+  },
+  { 
+    id: 8, 
+    name: 'Sarah Williams', 
+    email: 'sarah.williams@example.com', 
+    role: 'Manager', 
+    department: 'Marketing', 
+    status: 'Active',
+    joinDate: 'Jul 18, 2023',
+    lastActive: 'Today, 9:30 AM',
+    lastActiveDate: new Date(Date.now() - 12600000),
+    phone: '+1 (555) 890-1234',
+    location: 'Austin, USA',
+    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_reports', 'read_reports']
+  },
+  { 
+    id: 9, 
+    name: 'David Martinez', 
+    email: 'david.martinez@example.com', 
+    role: 'User', 
+    department: 'Sales', 
+    status: 'Active',
+    joinDate: 'Aug 2, 2023',
+    lastActive: 'Yesterday, 6:45 PM',
+    lastActiveDate: new Date(Date.now() - 14400000),
+    phone: '+1 (555) 901-2345',
+    location: 'Denver, USA',
+    permissions: ['read_users']
+  },
+  { 
+    id: 10, 
+    name: 'Emily Thompson', 
+    email: 'emily.thompson@example.com', 
+    role: 'Editor', 
+    department: 'Content', 
+    status: 'Active',
+    joinDate: 'Aug 14, 2023',
+    lastActive: 'Today, 11:15 AM',
+    lastActiveDate: new Date(Date.now() - 8100000),
+    phone: '+1 (555) 012-3456',
+    location: 'Portland, USA',
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_reports']
+  },
+  { 
+    id: 11, 
+    name: 'Robert Taylor', 
+    email: 'robert.taylor@example.com', 
+    role: 'User', 
+    department: 'Finance', 
+    status: 'Inactive',
+    joinDate: 'Aug 25, 2023',
+    lastActive: '5 days ago',
+    lastActiveDate: new Date(Date.now() - 432000000),
+    phone: '+1 (555) 123-4568',
+    location: 'Phoenix, USA',
+    permissions: ['read_users']
+  },
+  { 
+    id: 12, 
+    name: 'Lisa Anderson', 
+    email: 'lisa.anderson@example.com', 
+    role: 'Manager', 
+    department: 'Operations', 
+    status: 'Active',
+    joinDate: 'Sep 5, 2023',
+    lastActive: 'Today, 3:45 PM',
+    lastActiveDate: new Date(Date.now() - 2700000),
+    phone: '+1 (555) 234-5679',
+    location: 'Atlanta, USA',
+    avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_users', 'read_reports']
+  },
+  { 
+    id: 13, 
+    name: 'James Wilson', 
+    email: 'james.wilson@example.com', 
+    role: 'Viewer', 
+    department: 'Support', 
+    status: 'Pending',
+    joinDate: 'Sep 12, 2023',
+    lastActive: 'Never',
+    lastActiveDate: null,
+    phone: '+1 (555) 345-6780',
+    location: 'Dallas, USA',
+    permissions: ['read_users']
+  },
+  { 
+    id: 14, 
+    name: 'Maria Garcia', 
+    email: 'maria.garcia@example.com', 
+    role: 'Admin', 
+    department: 'IT', 
+    status: 'Active',
+    joinDate: 'Sep 20, 2023',
+    lastActive: 'Today, 4:10 PM',
+    lastActiveDate: new Date(Date.now() - 1800000),
+    phone: '+1 (555) 456-7891',
+    location: 'San Diego, USA',
+    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_users', 'admin_settings', 'system_config']
+  },
+  { 
+    id: 15, 
+    name: 'Kevin Brown', 
+    email: 'kevin.brown@example.com', 
+    role: 'User', 
+    department: 'Sales', 
+    status: 'Active',
+    joinDate: 'Oct 1, 2023',
+    lastActive: 'Yesterday, 1:00 PM',
+    lastActiveDate: new Date(Date.now() - 10800000),
+    phone: '+1 (555) 567-8902',
+    location: 'Houston, USA',
+    permissions: ['read_users']
+  },
+  { 
+    id: 16, 
+    name: 'Jennifer Lee', 
+    email: 'jennifer.lee@example.com', 
+    role: 'Editor', 
+    department: 'Content', 
+    status: 'Active',
+    joinDate: 'Oct 8, 2023',
+    lastActive: 'Today, 2:50 PM',
+    lastActiveDate: new Date(Date.now() - 4200000),
+    phone: '+1 (555) 678-9013',
+    location: 'Nashville, USA',
+    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_reports']
+  },
+  { 
+    id: 17, 
+    name: 'Thomas Moore', 
+    email: 'thomas.moore@example.com', 
+    role: 'User', 
+    department: 'Finance', 
+    status: 'Inactive',
+    joinDate: 'Oct 15, 2023',
+    lastActive: '1 week ago',
+    lastActiveDate: new Date(Date.now() - 604800000),
+    phone: '+1 (555) 789-0124',
+    location: 'Minneapolis, USA',
+    permissions: ['read_users']
+  },
+  { 
+    id: 18, 
+    name: 'Patricia Davis', 
+    email: 'patricia.davis@example.com', 
+    role: 'Manager', 
+    department: 'Marketing', 
+    status: 'Active',
+    joinDate: 'Oct 22, 2023',
+    lastActive: 'Today, 12:30 PM',
+    lastActiveDate: new Date(Date.now() - 9000000),
+    phone: '+1 (555) 890-1235',
+    location: 'Detroit, USA',
+    avatar: 'https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_reports', 'read_reports']
+  },
+  { 
+    id: 19, 
+    name: 'Christopher Jackson', 
+    email: 'christopher.jackson@example.com', 
+    role: 'User', 
+    department: 'Support', 
+    status: 'Active',
+    joinDate: 'Nov 1, 2023',
+    lastActive: 'Today, 5:00 PM',
+    lastActiveDate: new Date(Date.now() - 600000),
+    phone: '+1 (555) 901-2346',
+    location: 'Orlando, USA',
+    permissions: ['read_users']
+  },
+  { 
+    id: 20, 
+    name: 'Amanda White', 
+    email: 'amanda.white@example.com', 
+    role: 'Editor', 
+    department: 'Content', 
+    status: 'Active',
+    joinDate: 'Nov 8, 2023',
+    lastActive: 'Today, 1:45 PM',
+    lastActiveDate: new Date(Date.now() - 5100000),
+    phone: '+1 (555) 012-3457',
+    location: 'Las Vegas, USA',
+    avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150',
+    permissions: ['read_users', 'write_reports']
   }
 ])
 
@@ -984,16 +1191,53 @@ const filteredUsers = computed(() => {
     filtered = filtered.filter(user => user.department === filterDepartment.value)
   }
 
-  // Sort
-  if (sortBy.value) {
-    filtered.sort((a, b) => {
-      const aVal = a[sortBy.value] || ''
-      const bVal = b[sortBy.value] || ''
-      return aVal.localeCompare(bVal)
+  // Sort using table pagination sort settings
+  const sortField = tablePagination.value.sortBy || sortBy.value || 'name'
+  if (sortField) {
+    filtered.sort((a: any, b: any) => {
+      const aVal = String((a as any)[sortField] || '')
+      const bVal = String((b as any)[sortField] || '')
+      const comparison = aVal.localeCompare(bVal)
+      return tablePagination.value.descending ? -comparison : comparison
     })
   }
 
-  return filtered
+  // Update pagination row count (total filtered rows)
+  tablePagination.value.rowsNumber = filtered.length
+
+  // Apply pagination - slice the filtered array
+  const start = (tablePagination.value.page - 1) * tablePagination.value.rowsPerPage
+  const end = start + tablePagination.value.rowsPerPage
+  return filtered.slice(start, end)
+})
+
+// Total count for display
+const totalFilteredUsers = computed(() => {
+  let filtered = users.value
+
+  if (searchQuery.value) {
+    const query = searchQuery.value.toLowerCase()
+    filtered = filtered.filter(user => 
+      user.name.toLowerCase().includes(query) ||
+      user.email.toLowerCase().includes(query) ||
+      user.department?.toLowerCase().includes(query) ||
+      user.role.toLowerCase().includes(query)
+    )
+  }
+
+  if (filterRole.value && filterRole.value !== 'All') {
+    filtered = filtered.filter(user => user.role === filterRole.value)
+  }
+
+  if (filterStatus.value && filterStatus.value !== 'All') {
+    filtered = filtered.filter(user => user.status === filterStatus.value)
+  }
+
+  if (filterDepartment.value && filterDepartment.value !== 'All') {
+    filtered = filtered.filter(user => user.department === filterDepartment.value)
+  }
+
+  return filtered.length
 })
 
 // Methods
@@ -1002,9 +1246,8 @@ const onRequest = (props) => {
   
   tablePagination.value.page = page
   tablePagination.value.rowsPerPage = rowsPerPage
-  tablePagination.value.sortBy = sortBy
-  tablePagination.value.descending = descending
-  tablePagination.value.rowsNumber = filteredUsers.value.length
+  tablePagination.value.sortBy = sortBy || 'name'
+  tablePagination.value.descending = descending || false
 }
 
 const getStatusColor = (status) => {
@@ -1229,7 +1472,13 @@ const bulkActions = () => {
 }
 
 onMounted(() => {
+  // Initialize pagination with total users count
   tablePagination.value.rowsNumber = users.value.length
+})
+
+// Watch for filter changes to reset pagination to page 1
+watch([searchQuery, filterRole, filterStatus, filterDepartment], () => {
+  tablePagination.value.page = 1
 })
 </script>
 
@@ -1240,27 +1489,6 @@ onMounted(() => {
 
 .page-header {
   animation: fadeInUp 0.6s ease-out;
-  background: white;
-  padding: 24px;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.page-title-icon {
-  color: white;
-  background: var(--primary-color);
-  padding: 8px;
-  border-radius: 12px;
-}
-
-.page-header .text-h4 {
-  color: var(--text-dark);
-}
-
-.page-subtitle {
-  color: var(--text-light);
-  opacity: 1;
 }
 
 .stat-card {
@@ -1292,13 +1520,26 @@ onMounted(() => {
 .user-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
-  border: 1px solid rgba(30, 64, 175, 0.1);
+  border: 1px solid rgba(30, 64, 175, 0.1) !important;
+  background: rgba(255, 255, 255, 1) !important;
 }
 
 .user-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  border-color: rgba(30, 64, 175, 0.3);
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(30, 64, 175, 0.3) !important;
+}
+
+.user-card .text-h6 {
+  color: var(--text-dark) !important;
+}
+
+.user-card .text-caption {
+  color: var(--text-light) !important;
+}
+
+.user-card .text-body2 {
+  color: var(--text-dark) !important;
 }
 
 .add-user-card {

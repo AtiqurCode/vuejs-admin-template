@@ -95,7 +95,7 @@
             :key="item.label"
             clickable
             v-ripple
-            class="sidebar-item text-white"
+            class="sidebar-item"
             :active="activeItem === item.label"
             @click="setActiveItem(item.label)"
           >
@@ -493,8 +493,8 @@ const users = ref([
 const recentActivities = [
   { id: 1, title: 'User John Doe logged in', time: '2 minutes ago', icon: 'login', color: 'positive' },
   { id: 2, title: 'New user registered', time: '5 minutes ago', icon: 'person_add', color: 'primary' },
-  { id: 3, title: 'Report generated', time: '10 minutes ago', icon: 'description', color: 'secondary' },
-  { id: 4, title: 'System backup completed', time: '1 hour ago', icon: 'backup', color: 'accent' }
+  { id: 3, title: 'Report generated', time: '10 minutes ago', icon: 'description', color: 'info' },
+  { id: 4, title: 'System backup completed', time: '1 hour ago', icon: 'cloud_done', color: 'secondary' }
 ]
 
 const toggleLeftDrawer = () => {
@@ -722,15 +722,6 @@ onMounted(() => {
 <style scoped>
 .modern-layout {
   min-height: 100vh;
-}
-
-.modern-dialog .q-dialog__inner {
-  padding: 16px;
-}
-
-.modern-dialog .q-card {
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 /* Custom animations */

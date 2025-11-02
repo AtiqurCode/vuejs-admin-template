@@ -203,34 +203,36 @@ const getNotificationColor = (type: string) => {
 }
 
 .notification-center {
-  min-width: 380px;
-  max-width: 420px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  min-width: 380px !important;
+  max-width: 420px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background: rgba(255, 255, 255, 1) !important;
 }
 
 .notification-item {
-  padding: 16px;
-  margin: 8px;
-  border-radius: 16px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 16px !important;
+  margin: 8px !important;
+  border-radius: 16px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
 }
 
 .notification-item:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.02);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 1) !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(30, 64, 175, 0.2) !important;
 }
 
 .notification-item.unread {
-  border-left: 4px solid var(--primary-color);
-  background: rgba(30, 64, 175, 0.1);
+  border-left: 4px solid var(--primary-color) !important;
+  background: rgba(30, 64, 175, 0.05) !important;
 }
 
 .notification-item.unread:hover {
-  background: rgba(30, 64, 175, 0.15);
+  background: rgba(30, 64, 175, 0.08) !important;
 }
 
 .notification-unread-badge {

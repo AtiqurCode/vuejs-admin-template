@@ -35,6 +35,28 @@ body {
   min-height: 100vh;
 }
 
+/* Global Page Styling */
+.q-page {
+  background: transparent !important;
+  padding: 24px !important;
+}
+
+.q-page-container {
+  background: transparent !important;
+}
+
+/* Ensure all text is visible */
+.q-page .text-h4,
+.q-page .text-h5,
+.q-page .text-h6 {
+  color: var(--text-dark) !important;
+}
+
+.q-page .text-body1,
+.q-page .text-body2 {
+  color: var(--text-dark) !important;
+}
+
 /* Glass Morphism Cards */
 .glass-card {
   background: rgba(255, 255, 255, 0.98);
@@ -52,13 +74,13 @@ body {
 
 /* Modern Stat Cards */
 .stat-card {
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  position: relative;
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden !important;
+  position: relative !important;
 }
 
 .stat-card::before {
@@ -72,10 +94,10 @@ body {
 }
 
 .stat-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12) !important;
+  background: rgba(255, 255, 255, 1) !important;
+  border-color: rgba(30, 64, 175, 0.2) !important;
 }
 
 .stat-card .stat-icon {
@@ -92,11 +114,62 @@ body {
   font-size: 2.5rem;
 }
 
+.stat-card .text-subtitle2 {
+  color: var(--text-dark) !important;
+}
+
 /* Modern Header */
 .modern-header {
   background: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.modern-header .q-btn {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.modern-header .q-btn:hover {
+  background: rgba(30, 64, 175, 0.08) !important;
+  box-shadow: none !important;
+}
+
+.modern-header .q-btn .q-icon {
+  color: var(--text-dark) !important;
+}
+
+.modern-header .q-avatar {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.modern-header .q-toolbar-title .q-icon {
+  color: var(--primary-color) !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.modern-header .modern-btn {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.modern-header .modern-btn:hover {
+  background: rgba(30, 64, 175, 0.08) !important;
+  box-shadow: none !important;
+}
+
+/* Remove shadows from all toolbar buttons and icons */
+.modern-header .q-toolbar .q-btn,
+.modern-header .q-toolbar .q-btn-dropdown,
+.modern-header .q-toolbar .q-avatar {
+  box-shadow: none !important;
+}
+
+.modern-header .q-toolbar .q-btn:hover,
+.modern-header .q-toolbar .q-btn-dropdown:hover {
+  box-shadow: none !important;
 }
 
 .header-title {
@@ -165,20 +238,33 @@ body {
   color: var(--primary-color) !important;
 }
 
-/* Users page styling */
-.users-page .page-title {
-  color: var(--text-dark);
+/* Page Header Styling - Global Consistency */
+.page-header {
+  background: white !important;
+  padding: 24px !important;
+  border-radius: 16px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
 }
 
-.users-page .page-title-icon {
-  color: var(--primary-color);
-  background: rgba(30, 64, 175, 0.1);
-  padding: 8px;
-  border-radius: 12px;
+.page-header .text-h4 {
+  color: var(--text-dark) !important;
+  font-weight: 700;
 }
 
-.users-page .page-subtitle {
-  color: var(--text-light);
+.page-subtitle {
+  color: var(--text-light) !important;
+  opacity: 1;
+}
+
+.page-title-icon {
+  color: white !important;
+  background: var(--primary-color) !important;
+  padding: 8px !important;
+  border-radius: 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 /* User avatar styling */
@@ -226,127 +312,348 @@ body {
   color: var(--primary-color) !important;
 }
 
-.header-title {
-  color: white;
-}
-
-.q-toolbar {
-  color: white;
-}
-/* Modern Buttons */
+/* Modern Buttons - Professional Styling */
 .modern-btn {
-  border-radius: 12px;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: 0.3px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--shadow-sm);
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 8px 16px !important;
+  min-height: 40px !important;
 }
 
-.modern-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+.modern-btn:not(.btn-primary):not(.btn-secondary):not(.btn-success):not(.btn-warning):not(.btn-error):not(.btn-danger) {
+  background: transparent !important;
+  color: var(--text-dark) !important;
+  border: 1px solid var(--border-light) !important;
 }
 
+.modern-btn:not(.btn-primary):not(.btn-secondary):not(.btn-success):not(.btn-warning):not(.btn-error):not(.btn-danger):hover {
+  background: rgba(30, 64, 175, 0.08) !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15) !important;
+}
+
+/* Flat buttons - Professional styling */
+.q-btn.flat.modern-btn {
+  background: transparent !important;
+  color: var(--text-dark) !important;
+}
+
+.q-btn.flat.modern-btn:hover {
+  background: rgba(30, 64, 175, 0.08) !important;
+  color: var(--primary-color) !important;
+}
+
+/* Flat buttons with color props */
+.q-btn.flat[color="primary"] {
+  color: var(--primary-color) !important;
+}
+
+.q-btn.flat[color="primary"]:hover {
+  background: rgba(30, 64, 175, 0.08) !important;
+}
+
+.q-btn.flat[color="secondary"] {
+  color: var(--accent-color) !important;
+}
+
+.q-btn.flat[color="secondary"]:hover {
+  background: rgba(14, 165, 233, 0.08) !important;
+}
+
+.q-btn.flat[color="info"] {
+  color: var(--accent-color) !important;
+}
+
+.q-btn.flat[color="info"]:hover {
+  background: rgba(14, 165, 233, 0.08) !important;
+}
+
+.q-btn.flat[color="grey-6"] {
+  color: var(--text-light) !important;
+}
+
+.q-btn.flat[color="grey-6"]:hover {
+  background: rgba(0, 0, 0, 0.05) !important;
+  color: var(--text-dark) !important;
+}
+
+/* Primary Buttons */
 .btn-primary {
   background: var(--primary-color) !important;
   color: white !important;
-  border: none;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2) !important;
 }
 
 .btn-primary:hover {
   background: rgba(30, 64, 175, 0.9) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3) !important;
 }
 
+.btn-primary:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.2) !important;
+}
+
+/* Secondary Buttons */
 .btn-secondary {
   background: var(--accent-color) !important;
   color: white !important;
-  border: none;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2) !important;
 }
 
 .btn-secondary:hover {
   background: rgba(14, 165, 233, 0.9) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3) !important;
 }
 
+.btn-secondary:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2) !important;
+}
+
+/* Success Buttons */
 .btn-success {
   background: var(--success-color) !important;
   color: white !important;
-  border: none;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2) !important;
 }
 
 .btn-success:hover {
   background: rgba(5, 150, 105, 0.9) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3) !important;
 }
 
+.btn-success:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2) !important;
+}
+
+/* Warning Buttons */
 .btn-warning {
   background: var(--warning-color) !important;
   color: white !important;
-  border: none;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2) !important;
 }
 
 .btn-warning:hover {
   background: rgba(217, 119, 6, 0.9) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3) !important;
+}
+
+.btn-warning:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2) !important;
+}
+
+/* Error/Danger Buttons */
+.btn-error,
+.btn-danger,
+.text-negative.modern-btn {
+  background: var(--error-color) !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2) !important;
+}
+
+.btn-error:hover,
+.btn-danger:hover,
+.text-negative.modern-btn:hover {
+  background: rgba(220, 38, 38, 0.9) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;
+}
+
+.btn-error:active,
+.btn-danger:active,
+.text-negative.modern-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2) !important;
+}
+
+/* Buttons with color props - Professional styling */
+.q-btn[color="primary"]:not(.modern-btn):not(.btn-primary) {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.q-btn[color="primary"]:not(.modern-btn):not(.btn-primary):hover {
+  background: rgba(30, 64, 175, 0.9) !important;
+}
+
+.q-btn[color="secondary"]:not(.modern-btn):not(.btn-secondary) {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.q-btn[color="secondary"]:not(.modern-btn):not(.btn-secondary):hover {
+  background: rgba(14, 165, 233, 0.9) !important;
+}
+
+.q-btn[color="positive"]:not(.modern-btn):not(.btn-success) {
+  background: var(--success-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.q-btn[color="positive"]:not(.modern-btn):not(.btn-success):hover {
+  background: rgba(5, 150, 105, 0.9) !important;
+}
+
+.q-btn[color="negative"]:not(.modern-btn):not(.btn-error):not(.btn-danger) {
+  background: var(--error-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.q-btn[color="negative"]:not(.modern-btn):not(.btn-error):not(.btn-danger):hover {
+  background: rgba(220, 38, 38, 0.9) !important;
+}
+
+.q-btn[color="info"]:not(.modern-btn):not(.btn-secondary) {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.q-btn[color="info"]:not(.modern-btn):not(.btn-secondary):hover {
+  background: rgba(14, 165, 233, 0.9) !important;
+}
+
+/* Icon Buttons in Cards/Tables - Professional styling */
+.q-card-actions .q-btn,
+.q-table .q-btn {
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.q-card-actions .q-btn.flat:hover,
+.q-table .q-btn.flat:hover {
+  background: rgba(30, 64, 175, 0.08) !important;
+  transform: scale(1.1) !important;
+}
+
+/* Small/Dense buttons */
+.q-btn[size="sm"],
+.q-btn.dense {
+  min-height: 32px !important;
+  padding: 4px 12px !important;
+  font-size: 0.875rem !important;
+}
+
+/* Round buttons */
+.q-btn.round {
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.q-btn.round[size="sm"],
+.q-btn.round.dense {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+/* Button Toggle Professional Styling */
+.modern-btn-toggle {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+.modern-btn-toggle .q-btn {
+  background: rgba(255, 255, 255, 1) !important;
+  color: var(--text-dark) !important;
+  border: 1px solid var(--border-light) !important;
+}
+
+.modern-btn-toggle .q-btn--active {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-color: var(--primary-color) !important;
 }
 
 /* Modern Table */
 .modern-table {
-  background: rgba(255, 255, 255, 1);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 1) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-md) !important;
+  border: 1px solid var(--border-light) !important;
 }
 
 .modern-table .q-table__top {
-  background: rgba(30, 64, 175, 0.05);
-  border-bottom: 1px solid var(--border-light);
+  background: rgba(30, 64, 175, 0.05) !important;
+  border-bottom: 1px solid var(--border-light) !important;
 }
 
 .modern-table .q-table thead th {
-  background: rgba(30, 64, 175, 0.03);
-  color: var(--text-dark);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.75rem;
+  background: rgba(30, 64, 175, 0.03) !important;
+  color: var(--text-dark) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 0.75rem !important;
+}
+
+.modern-table .q-table tbody tr {
+  color: var(--text-dark) !important;
 }
 
 .modern-table .q-table tbody tr:hover {
-  background: rgba(30, 64, 175, 0.04);
+  background: rgba(30, 64, 175, 0.04) !important;
+}
+
+.modern-table .q-table tbody td {
+  color: var(--text-dark) !important;
 }
 
 /* Modern Inputs */
 .modern-input .q-field__control {
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid var(--border-light);
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid var(--border-light) !important;
   transition: all 0.3s ease;
 }
 
 .modern-input .q-field__control:hover {
-  border-color: var(--primary-light);
-  background: rgba(255, 255, 255, 1);
+  border-color: var(--primary-light) !important;
+  background: rgba(255, 255, 255, 1) !important;
 }
 
 .modern-input.q-field--focused .q-field__control {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1) !important;
+}
+
+.modern-input .q-field__label {
+  color: var(--text-dark) !important;
+}
+
+.modern-input .q-field__native {
+  color: var(--text-dark) !important;
 }
 
 /* Modern Cards */
 .content-card {
-  background: rgba(255, 255, 255, 1);
-  border: 1px solid var(--border-light);
-  border-radius: 16px;
-  box-shadow: var(--shadow-md);
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-md) !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -355,40 +662,87 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
+.content-card .text-h5,
+.content-card .text-h6 {
+  color: var(--text-dark) !important;
+}
+
+.content-card .text-subtitle2 {
+  color: var(--text-light) !important;
+}
+
 /* Activity Items */
 .activity-item {
-  border-radius: 16px;
-  margin: 8px 0;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px !important;
+  margin: 8px 0 !important;
+  padding: 16px !important;
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   transition: all 0.3s ease;
 }
 
 .activity-item:hover {
-  background: rgba(255, 255, 255, 1);
-  transform: translateX(8px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 1) !important;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  border-color: rgba(30, 64, 175, 0.2) !important;
+}
+
+.activity-item .text-body2 {
+  color: var(--text-dark) !important;
+}
+
+.activity-item .text-caption {
+  color: var(--text-light) !important;
+}
+
+/* Recent Activity Icon Backgrounds - Better Matching Colors */
+/* Override Quasar's default avatar colors with softer, matching backgrounds */
+.activity-item .q-avatar[color="positive"] {
+  background: rgba(5, 150, 105, 0.12) !important;
+  color: var(--success-color) !important;
+}
+
+.activity-item .q-avatar[color="primary"] {
+  background: rgba(30, 64, 175, 0.12) !important;
+  color: var(--primary-color) !important;
+}
+
+.activity-item .q-avatar[color="secondary"],
+.activity-item .q-avatar[color="accent"] {
+  background: rgba(14, 165, 233, 0.12) !important;
+  color: var(--accent-color) !important;
+}
+
+.activity-item .q-avatar[color="info"] {
+  background: rgba(14, 165, 233, 0.12) !important;
+  color: var(--accent-color) !important;
+}
+
+/* Ensure avatars in activity items use the colored backgrounds properly */
+.activity-item .q-avatar {
+  border: none !important;
 }
 
 /* Status Chips */
 .status-chip {
-  border-radius: 20px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-size: 0.75rem;
-  box-shadow: var(--shadow-sm);
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  font-size: 0.75rem !important;
+  box-shadow: var(--shadow-sm) !important;
+  padding: 4px 12px !important;
 }
 
 .status-active {
-  background: var(--success-color);
-  color: white;
+  background: var(--success-color) !important;
+  color: white !important;
 }
 
 .status-inactive {
-  background: var(--text-light);
-  color: white;
+  background: var(--text-light) !important;
+  color: white !important;
 }
 
 /* Notification Badge */
@@ -552,8 +906,77 @@ body {
   }
 }
 
-/* Smooth Animations */
-* {
+/* Professional Badge and Indicator Styling */
+.q-badge {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  padding: 2px 8px !important;
+}
+
+.q-badge[color="positive"] {
+  background: var(--success-color) !important;
+}
+
+.q-badge[color="negative"] {
+  background: var(--error-color) !important;
+}
+
+.q-badge[color="warning"] {
+  background: var(--warning-color) !important;
+}
+
+.q-timeline {
+  color: var(--text-dark) !important;
+}
+
+.q-timeline-entry .text-h6,
+.q-timeline-entry .text-subtitle2 {
+  color: var(--text-dark) !important;
+}
+
+/* Separator Styling */
+.q-separator {
+  background: var(--border-light) !important;
+}
+
+/* Avatar Enhancements */
+.q-avatar {
+  border: 2px solid rgba(30, 64, 175, 0.1) !important;
+}
+
+/* Menu and Dropdown Styling */
+.q-menu {
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid var(--border-light) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
+.q-menu .q-item {
+  color: var(--text-dark) !important;
+}
+
+.q-menu .q-item:hover {
+  background: rgba(30, 64, 175, 0.05) !important;
+}
+
+/* Tooltip Styling */
+.q-tooltip {
+  background: var(--text-dark) !important;
+  color: white !important;
+  border-radius: 8px !important;
+  padding: 6px 12px !important;
+}
+
+/* Smooth Animations - Selective */
+.stat-card,
+.content-card,
+.activity-item,
+.notification-item,
+.modern-btn,
+.sidebar-item {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -571,31 +994,41 @@ body {
 
 /* Notification Center Styles */
 .notification-center {
-  background: rgba(255, 255, 255, 1);
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-  max-width: 400px;
+  background: rgba(255, 255, 255, 1) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  max-width: 400px !important;
 }
 
 .notification-item {
-  border-radius: 16px;
-  margin: 8px;
-  padding: 16px;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
+  border-radius: 16px !important;
+  margin: 8px !important;
+  padding: 16px !important;
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  transition: all 0.3s ease !important;
 }
 
 .notification-item:hover {
-  background: rgba(255, 255, 255, 0.8);
-  transform: scale(1.02);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 1) !important;
+  transform: scale(1.02) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(30, 64, 175, 0.2) !important;
 }
 
 .notification-item.unread {
-  border-left: 4px solid var(--primary-color);
-  background: rgba(30, 64, 175, 0.05);
+  border-left: 4px solid var(--primary-color) !important;
+  background: rgba(30, 64, 175, 0.05) !important;
+}
+
+.notification-item .text-body1,
+.notification-item .text-body2 {
+  color: var(--text-dark) !important;
+}
+
+.notification-item .text-caption {
+  color: var(--text-light) !important;
 }
 
 /* Custom Scrollbar */
@@ -616,4 +1049,116 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+/* Professional Component Enhancements */
+.q-stepper,
+.q-stepper-header,
+.q-stepper-step {
+  background: transparent !important;
+}
+
+.q-stepper .text-h6 {
+  color: var(--text-dark) !important;
+}
+
+.q-tab {
+  color: var(--text-dark) !important;
+}
+
+.q-tab--active {
+  color: var(--primary-color) !important;
+}
+
+.q-select .q-field__label,
+.q-select .q-field__native {
+  color: var(--text-dark) !important;
+}
+
+.q-toggle__label {
+  color: var(--text-dark) !important;
+}
+
+.q-list .q-item {
+  color: var(--text-dark) !important;
+}
+
+.q-list .q-item-label {
+  color: var(--text-dark) !important;
+}
+
+.q-item-label.caption {
+  color: var(--text-light) !important;
+}
+
+/* Chip Styling */
+.q-chip {
+  background: rgba(255, 255, 255, 1) !important;
+  border: 1px solid var(--border-light) !important;
+  color: var(--text-dark) !important;
+}
+
+.q-chip[color="positive"] {
+  background: var(--success-color) !important;
+  color: white !important;
+}
+
+.q-chip[color="negative"] {
+  background: var(--error-color) !important;
+  color: white !important;
+}
+
+.q-chip[color="warning"] {
+  background: var(--warning-color) !important;
+  color: white !important;
+}
+
+.q-chip[color="primary"] {
+  background: var(--primary-color) !important;
+  color: white !important;
+}
+
+.q-chip[color="secondary"] {
+  background: var(--accent-color) !important;
+  color: white !important;
+}
+
+/* Progress Bar Styling */
+.q-linear-progress {
+  border-radius: 4px !important;
+}
+
+/* Timeline Enhancements */
+.q-timeline-entry .text-body2 {
+  color: var(--text-dark) !important;
+}
+
+/* Top Performers and Lists */
+.top-performers .q-item {
+  border-radius: 8px;
+  margin: 4px 0;
+  transition: all 0.2s ease;
+}
+
+.top-performers .q-item:hover {
+  background: rgba(30, 64, 175, 0.03);
+}
+
+/* Quick Reports Buttons */
+.quick-reports .modern-btn {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* Ensure all grey text uses proper variables */
+.text-grey-5,
+.text-grey-6,
+.text-grey-7 {
+  color: var(--text-light) !important;
+}
+
+/* Dialog Backdrop */
+.q-dialog__backdrop {
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: none !important;
 }
