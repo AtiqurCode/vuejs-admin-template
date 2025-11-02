@@ -4,9 +4,22 @@ export interface User {
   name: string
   email: string
   role: string
-  status: 'Active' | 'Inactive'
+  status: 'Active' | 'Inactive' | 'Pending' | 'Suspended'
   department?: string
   avatar?: string
+  phone?: string
+  location?: string
+  joinDate?: string
+  lastActive?: string
+  lastActiveDate?: Date | null
+  permissions?: string[]
+  recentActivity?: Array<{
+    id: number
+    title: string
+    description: string
+    time: string
+    icon: string
+  }>
   createdAt?: Date
   lastLogin?: Date
 }

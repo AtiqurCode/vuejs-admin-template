@@ -348,7 +348,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay, isToday, isSameMonth, addMonths, subMonths, addWeeks, subWeeks, addDays, subDays, getDay, setHours, setMinutes } from 'date-fns'
+import { format, startOfMonth, endOfMonth, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay, isToday, isSameMonth, addMonths, subMonths, addWeeks, subWeeks, addDays, subDays, setHours, setMinutes } from 'date-fns'
 import { useQuasar } from 'quasar'
 
 const $q = useQuasar()

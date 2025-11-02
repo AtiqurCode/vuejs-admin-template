@@ -743,6 +743,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { useQuasar } from 'quasar'
+import type { User } from '../types'
 
 const $q = useQuasar()
 
@@ -755,8 +756,9 @@ const filterStatus = ref('All')
 const filterDepartment = ref('All')
 const sortBy = ref('name')
 const viewMode = ref('table')
-const selectedUser = ref(null)
-const selectedUsers = ref([])
+
+const selectedUser = ref<User | null>(null)
+const selectedUsers = ref<User[]>([])
 const addUserStep = ref(1)
 const userDetailTab = ref('details')
 
@@ -856,24 +858,24 @@ const userStats = [
 
 // Enhanced table columns
 const columns = [
-  { name: 'avatar', label: '', field: 'avatar', align: 'center', style: 'width: 60px' },
-  { name: 'name', required: true, label: 'Name', align: 'left', field: 'name', sortable: true },
-  { name: 'role', align: 'left', label: 'Role', field: 'role', sortable: true },
-  { name: 'department', align: 'left', label: 'Department', field: 'department', sortable: true },
-  { name: 'status', align: 'center', label: 'Status', field: 'status', sortable: true },
-  { name: 'lastActive', align: 'left', label: 'Last Active', field: 'lastActive', sortable: true },
-  { name: 'actions', align: 'center', label: 'Actions', field: 'actions', style: 'width: 200px' }
+  { name: 'avatar', label: '', field: 'avatar', align: 'center' as const, style: 'width: 60px' },
+  { name: 'name', required: true, label: 'Name', align: 'left' as const, field: 'name', sortable: true },
+  { name: 'role', align: 'left' as const, label: 'Role', field: 'role', sortable: true },
+  { name: 'department', align: 'left' as const, label: 'Department', field: 'department', sortable: true },
+  { name: 'status', align: 'center' as const, label: 'Status', field: 'status', sortable: true },
+  { name: 'lastActive', align: 'left' as const, label: 'Last Active', field: 'lastActive', sortable: true },
+  { name: 'actions', align: 'center' as const, label: 'Actions', field: 'actions', style: 'width: 200px' }
 ]
 
 // Enhanced users data
-const users = ref([
+const users = ref<User[]>([
   { 
     id: 1, 
     name: 'John Doe', 
     email: 'john@example.com', 
     role: 'Admin', 
     department: 'IT', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Jan 15, 2023',
     lastActive: 'Today, 2:30 PM',
     lastActiveDate: new Date(),
@@ -892,7 +894,7 @@ const users = ref([
     email: 'jane@example.com', 
     role: 'Manager', 
     department: 'Sales', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Feb 20, 2023',
     lastActive: 'Yesterday, 4:15 PM',
     lastActiveDate: new Date(Date.now() - 86400000),
@@ -907,7 +909,7 @@ const users = ref([
     email: 'bob@example.com', 
     role: 'User', 
     department: 'Marketing', 
-    status: 'Inactive',
+    status: 'Inactive' as const,
     joinDate: 'Mar 10, 2023',
     lastActive: '3 days ago',
     lastActiveDate: new Date(Date.now() - 259200000),
@@ -921,7 +923,7 @@ const users = ref([
     email: 'alice@example.com', 
     role: 'Editor', 
     department: 'Content', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Apr 5, 2023',
     lastActive: 'Today, 10:45 AM',
     lastActiveDate: new Date(),
@@ -936,7 +938,7 @@ const users = ref([
     email: 'charlie@example.com', 
     role: 'User', 
     department: 'Support', 
-    status: 'Pending',
+    status: 'Pending' as const,
     joinDate: 'May 12, 2023',
     lastActive: 'Never',
     lastActiveDate: null,
@@ -950,7 +952,7 @@ const users = ref([
     email: 'diana@example.com', 
     role: 'Manager', 
     department: 'HR', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Jun 8, 2023',
     lastActive: '2 hours ago',
     lastActiveDate: new Date(Date.now() - 7200000),
@@ -965,7 +967,7 @@ const users = ref([
     email: 'michael.chen@example.com', 
     role: 'Developer', 
     department: 'IT', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Jul 3, 2023',
     lastActive: 'Today, 1:20 PM',
     lastActiveDate: new Date(Date.now() - 5400000),
@@ -980,7 +982,7 @@ const users = ref([
     email: 'sarah.williams@example.com', 
     role: 'Manager', 
     department: 'Marketing', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Jul 18, 2023',
     lastActive: 'Today, 9:30 AM',
     lastActiveDate: new Date(Date.now() - 12600000),
@@ -995,7 +997,7 @@ const users = ref([
     email: 'david.martinez@example.com', 
     role: 'User', 
     department: 'Sales', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Aug 2, 2023',
     lastActive: 'Yesterday, 6:45 PM',
     lastActiveDate: new Date(Date.now() - 14400000),
@@ -1009,7 +1011,7 @@ const users = ref([
     email: 'emily.thompson@example.com', 
     role: 'Editor', 
     department: 'Content', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Aug 14, 2023',
     lastActive: 'Today, 11:15 AM',
     lastActiveDate: new Date(Date.now() - 8100000),
@@ -1024,7 +1026,7 @@ const users = ref([
     email: 'robert.taylor@example.com', 
     role: 'User', 
     department: 'Finance', 
-    status: 'Inactive',
+    status: 'Inactive' as const,
     joinDate: 'Aug 25, 2023',
     lastActive: '5 days ago',
     lastActiveDate: new Date(Date.now() - 432000000),
@@ -1038,7 +1040,7 @@ const users = ref([
     email: 'lisa.anderson@example.com', 
     role: 'Manager', 
     department: 'Operations', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Sep 5, 2023',
     lastActive: 'Today, 3:45 PM',
     lastActiveDate: new Date(Date.now() - 2700000),
@@ -1053,7 +1055,7 @@ const users = ref([
     email: 'james.wilson@example.com', 
     role: 'Viewer', 
     department: 'Support', 
-    status: 'Pending',
+    status: 'Pending' as const,
     joinDate: 'Sep 12, 2023',
     lastActive: 'Never',
     lastActiveDate: null,
@@ -1067,7 +1069,7 @@ const users = ref([
     email: 'maria.garcia@example.com', 
     role: 'Admin', 
     department: 'IT', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Sep 20, 2023',
     lastActive: 'Today, 4:10 PM',
     lastActiveDate: new Date(Date.now() - 1800000),
@@ -1082,7 +1084,7 @@ const users = ref([
     email: 'kevin.brown@example.com', 
     role: 'User', 
     department: 'Sales', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Oct 1, 2023',
     lastActive: 'Yesterday, 1:00 PM',
     lastActiveDate: new Date(Date.now() - 10800000),
@@ -1096,7 +1098,7 @@ const users = ref([
     email: 'jennifer.lee@example.com', 
     role: 'Editor', 
     department: 'Content', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Oct 8, 2023',
     lastActive: 'Today, 2:50 PM',
     lastActiveDate: new Date(Date.now() - 4200000),
@@ -1111,7 +1113,7 @@ const users = ref([
     email: 'thomas.moore@example.com', 
     role: 'User', 
     department: 'Finance', 
-    status: 'Inactive',
+    status: 'Inactive' as const,
     joinDate: 'Oct 15, 2023',
     lastActive: '1 week ago',
     lastActiveDate: new Date(Date.now() - 604800000),
@@ -1125,7 +1127,7 @@ const users = ref([
     email: 'patricia.davis@example.com', 
     role: 'Manager', 
     department: 'Marketing', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Oct 22, 2023',
     lastActive: 'Today, 12:30 PM',
     lastActiveDate: new Date(Date.now() - 9000000),
@@ -1140,7 +1142,7 @@ const users = ref([
     email: 'christopher.jackson@example.com', 
     role: 'User', 
     department: 'Support', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Nov 1, 2023',
     lastActive: 'Today, 5:00 PM',
     lastActiveDate: new Date(Date.now() - 600000),
@@ -1154,7 +1156,7 @@ const users = ref([
     email: 'amanda.white@example.com', 
     role: 'Editor', 
     department: 'Content', 
-    status: 'Active',
+    status: 'Active' as const,
     joinDate: 'Nov 8, 2023',
     lastActive: 'Today, 1:45 PM',
     lastActiveDate: new Date(Date.now() - 5100000),
@@ -1211,37 +1213,37 @@ const filteredUsers = computed(() => {
   return filtered.slice(start, end)
 })
 
-// Total count for display
-const totalFilteredUsers = computed(() => {
-  let filtered = users.value
-
-  if (searchQuery.value) {
-    const query = searchQuery.value.toLowerCase()
-    filtered = filtered.filter(user => 
-      user.name.toLowerCase().includes(query) ||
-      user.email.toLowerCase().includes(query) ||
-      user.department?.toLowerCase().includes(query) ||
-      user.role.toLowerCase().includes(query)
-    )
-  }
-
-  if (filterRole.value && filterRole.value !== 'All') {
-    filtered = filtered.filter(user => user.role === filterRole.value)
-  }
-
-  if (filterStatus.value && filterStatus.value !== 'All') {
-    filtered = filtered.filter(user => user.status === filterStatus.value)
-  }
-
-  if (filterDepartment.value && filterDepartment.value !== 'All') {
-    filtered = filtered.filter(user => user.department === filterDepartment.value)
-  }
-
-  return filtered.length
-})
+// Total count for display (commented out as it's not currently used, but kept for potential future use)
+// const totalFilteredUsers = computed(() => {
+//   let filtered = users.value
+//
+//   if (searchQuery.value) {
+//     const query = searchQuery.value.toLowerCase()
+//     filtered = filtered.filter(user => 
+//       user.name.toLowerCase().includes(query) ||
+//       user.email.toLowerCase().includes(query) ||
+//       user.department?.toLowerCase().includes(query) ||
+//       user.role.toLowerCase().includes(query)
+//     )
+//   }
+//
+//   if (filterRole.value && filterRole.value !== 'All') {
+//     filtered = filtered.filter(user => user.role === filterRole.value)
+//   }
+//
+//   if (filterStatus.value && filterStatus.value !== 'All') {
+//     filtered = filtered.filter(user => user.status === filterStatus.value)
+//   }
+//
+//   if (filterDepartment.value && filterDepartment.value !== 'All') {
+//     filtered = filtered.filter(user => user.department === filterDepartment.value)
+//   }
+//
+//   return filtered.length
+// })
 
 // Methods
-const onRequest = (props) => {
+const onRequest = (props: { pagination: { page: number; rowsPerPage: number; sortBy: string | null; descending: boolean } }) => {
   const { page, rowsPerPage, sortBy, descending } = props.pagination
   
   tablePagination.value.page = page
@@ -1250,8 +1252,8 @@ const onRequest = (props) => {
   tablePagination.value.descending = descending || false
 }
 
-const getStatusColor = (status) => {
-  const colors = {
+const getStatusColor = (status: 'Active' | 'Inactive' | 'Pending' | 'Suspended'): string => {
+  const colors: Record<'Active' | 'Inactive' | 'Pending' | 'Suspended', string> = {
     'Active': 'positive',
     'Inactive': 'negative',
     'Pending': 'warning',
@@ -1260,8 +1262,8 @@ const getStatusColor = (status) => {
   return colors[status] || 'grey'
 }
 
-const getStatusIcon = (status) => {
-  const icons = {
+const getStatusIcon = (status: 'Active' | 'Inactive' | 'Pending' | 'Suspended'): string => {
+  const icons: Record<'Active' | 'Inactive' | 'Pending' | 'Suspended', string> = {
     'Active': 'check_circle',
     'Inactive': 'cancel',
     'Pending': 'schedule',
@@ -1270,10 +1272,12 @@ const getStatusIcon = (status) => {
   return icons[status] || 'help'
 }
 
-const getTimeAgo = (date) => {
+const getTimeAgo = (date: Date | string | null): string => {
   if (!date) return 'Never'
+  const dateObj = date instanceof Date ? date : new Date(date)
+  if (isNaN(dateObj.getTime())) return 'Invalid date'
   const now = new Date()
-  const diff = now - date
+  const diff = now.getTime() - dateObj.getTime()
   const days = Math.floor(diff / (1000 * 60 * 60 * 24))
   const hours = Math.floor(diff / (1000 * 60 * 60))
   const minutes = Math.floor(diff / (1000 * 60))
@@ -1284,7 +1288,7 @@ const getTimeAgo = (date) => {
   return 'Just now'
 }
 
-const filterByStatus = (filter) => {
+const filterByStatus = (filter: string): void => {
   switch (filter) {
     case 'all':
       filterStatus.value = 'All'
@@ -1318,13 +1322,14 @@ const addUser = () => {
       email: newUser.value.email,
       role: newUser.value.role,
       department: newUser.value.department,
-      status: newUser.value.active ? 'Active' : 'Inactive',
+      status: (newUser.value.active ? 'Active' : 'Inactive') as 'Active' | 'Inactive',
       joinDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
       lastActive: 'Never',
       lastActiveDate: null,
-      phone: newUser.value.phone,
-      avatar: newUser.value.avatar,
-      permissions: newUser.value.permissions
+      phone: newUser.value.phone || undefined,
+      location: undefined,
+      avatar: newUser.value.avatar || undefined,
+      permissions: newUser.value.permissions || []
     })
     
     closeAddUserDialog()
@@ -1364,13 +1369,13 @@ const closeAddUserDialog = () => {
   }
 }
 
-const viewUser = (user) => {
+const viewUser = (user: User) => {
   selectedUser.value = user
   showViewUserDialog.value = true
   userDetailTab.value = 'details'
 }
 
-const editUser = (user) => {
+const editUser = (user: User) => {
   $q.notify({
     message: `Edit user: ${user.name}`,
     icon: 'edit',
@@ -1385,7 +1390,7 @@ const editUserFromView = () => {
   }
 }
 
-const sendMessage = (user) => {
+const sendMessage = (user: User) => {
   $q.notify({
     message: `Send message to: ${user.name}`,
     icon: 'email',
@@ -1400,7 +1405,7 @@ const sendMessageFromView = () => {
   }
 }
 
-const toggleUserStatus = (user) => {
+const toggleUserStatus = (user: User) => {
   const newStatus = user.status === 'Active' ? 'Inactive' : 'Active'
   user.status = newStatus
   
@@ -1411,7 +1416,7 @@ const toggleUserStatus = (user) => {
   })
 }
 
-const resetPassword = (user) => {
+const resetPassword = (user: User) => {
   $q.notify({
     message: `Password reset email sent to: ${user.email}`,
     icon: 'lock_reset',
@@ -1419,7 +1424,7 @@ const resetPassword = (user) => {
   })
 }
 
-const deleteUser = (user) => {
+const deleteUser = (user: User) => {
   $q.dialog({
     title: 'Confirm Delete',
     message: `Are you sure you want to delete ${user.name}? This action cannot be undone.`,

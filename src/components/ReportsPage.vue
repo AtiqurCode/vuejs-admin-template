@@ -394,10 +394,10 @@ const recentActivities = [
 ]
 
 const engagementColumns = [
-  { name: 'user', label: 'User', field: 'user', align: 'left', sortable: true },
-  { name: 'sessions', label: 'Sessions', field: 'sessions', align: 'center', sortable: true },
-  { name: 'duration', label: 'Avg Duration', field: 'duration', align: 'center', sortable: true },
-  { name: 'engagement', label: 'Engagement', field: 'engagement', align: 'center', sortable: true }
+  { name: 'user', label: 'User', field: 'user', align: 'left' as const, sortable: true },
+  { name: 'sessions', label: 'Sessions', field: 'sessions', align: 'center' as const, sortable: true },
+  { name: 'duration', label: 'Avg Duration', field: 'duration', align: 'center' as const, sortable: true },
+  { name: 'engagement', label: 'Engagement', field: 'engagement', align: 'center' as const, sortable: true }
 ]
 
 const userEngagementData = [
@@ -409,10 +409,10 @@ const userEngagementData = [
 ]
 
 const performanceColumns = [
-  { name: 'metric', label: 'Metric', field: 'metric', align: 'left', sortable: true },
-  { name: 'current', label: 'Current', field: 'current', align: 'center', sortable: true },
-  { name: 'target', label: 'Target', field: 'target', align: 'center', sortable: true },
-  { name: 'status', label: 'Status', field: 'status', align: 'center', sortable: true }
+  { name: 'metric', label: 'Metric', field: 'metric', align: 'left' as const, sortable: true },
+  { name: 'current', label: 'Current', field: 'current', align: 'center' as const, sortable: true },
+  { name: 'target', label: 'Target', field: 'target', align: 'center' as const, sortable: true },
+  { name: 'status', label: 'Status', field: 'status', align: 'center' as const, sortable: true }
 ]
 
 const performanceData = [

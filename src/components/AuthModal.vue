@@ -131,10 +131,6 @@ const skipAuth = () => {
   })
 }
 
-const checkAuth = async () => {
-  // Don't show auth modal automatically
-  // Only show when explicitly called
-}
 
 onMounted(() => {
   // Don't check auth on mount

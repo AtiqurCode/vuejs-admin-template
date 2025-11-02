@@ -469,9 +469,17 @@ const showAddUserDialog = ref(false)
 const showSendNotificationDialog = ref(false)
 const sendingNotification = ref(false)
 const showCommandPalette = ref(false)
-const user = ref({ email: 'demo@example.com', id: 'demo-user' })
-const authModal = ref(null)
-const commandPalette = ref(null)
+interface UserType {
+  email: string
+  id: string
+  user_metadata?: {
+    avatar_url?: string
+  }
+}
+
+const user = ref<UserType>({ email: 'demo@example.com', id: 'demo-user' })
+const authModal = ref<{ show: () => void } | null>(null)
+const commandPalette = ref<{ open: () => void; close: () => void } | null>(null)
 
 const newUser = ref({
   name: '',
@@ -511,11 +519,11 @@ const stats = ref([
 ])
 
 const columns = [
-  { name: 'name', required: true, label: 'Name', align: 'left', field: 'name', sortable: true },
-  { name: 'email', align: 'left', label: 'Email', field: 'email', sortable: true },
-  { name: 'role', align: 'left', label: 'Role', field: 'role', sortable: true },
-  { name: 'status', align: 'center', label: 'Status', field: 'status', sortable: true },
-  { name: 'actions', align: 'center', label: 'Actions', field: 'actions' }
+  { name: 'name', required: true, label: 'Name', align: 'left' as const, field: 'name', sortable: true },
+  { name: 'email', align: 'left' as const, label: 'Email', field: 'email', sortable: true },
+  { name: 'role', align: 'left' as const, label: 'Role', field: 'role', sortable: true },
+  { name: 'status', align: 'center' as const, label: 'Status', field: 'status', sortable: true },
+  { name: 'actions', align: 'center' as const, label: 'Actions', field: 'actions' }
 ]
 
 const users = ref([
@@ -738,7 +746,7 @@ const handleAuthentication = (authenticatedUser: any) => {
 const handleLogout = async () => {
   try {
     await supabase.auth.signOut()
-    user.value = null
+    user.value = { email: 'demo@example.com', id: 'demo-user' }
     $q.notify({
       type: 'positive',
       message: 'Logged out successfully',
@@ -828,7 +836,11 @@ onMounted(() => {
     if (event === 'SIGNED_OUT') {
       user.value = { email: 'demo@example.com', id: 'demo-user' }
     } else if (event === 'SIGNED_IN' && session?.user) {
-      user.value = session.user
+      user.value = {
+        email: session.user.email || 'demo@example.com',
+        id: session.user.id,
+        user_metadata: session.user.user_metadata || {}
+      }
     }
   })
 })

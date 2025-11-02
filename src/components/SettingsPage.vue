@@ -454,7 +454,8 @@ const updateColorScheme = (value: string) => {
   })
 }
 
-const updateFontSize = (value: number) => {
+const updateFontSize = (value: number | null) => {
+  if (value === null) return
   document.documentElement.style.fontSize = `${value}px`
 }
 
