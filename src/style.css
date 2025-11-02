@@ -568,6 +568,26 @@ body {
   height: 32px !important;
 }
 
+/* Drag and Drop Styling */
+.draggable-stat-card {
+  cursor: grab;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.draggable-stat-card:active {
+  cursor: grabbing;
+}
+
+.draggable-stat-card.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.draggable-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+}
+
 /* Button Toggle Professional Styling */
 .modern-btn-toggle {
   border-radius: 12px !important;

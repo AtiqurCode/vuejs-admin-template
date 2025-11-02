@@ -37,6 +37,20 @@
               @click="showSendNotificationDialog = true"
               class="modern-btn"
             />
+            
+            <!-- Command Palette Trigger -->
+            <q-btn
+              flat
+              dense
+              round
+              icon="search"
+              color="dark"
+              aria-label="Command palette"
+              @click="showCommandPalette = true"
+              class="modern-btn"
+            >
+              <q-tooltip>Command Palette (⌘K)</q-tooltip>
+            </q-btn>
 
             <!-- User Profile Menu -->
             <q-btn-dropdown
@@ -112,10 +126,15 @@
 
       <q-page-container>
         <q-page class="q-pa-lg" style="background: transparent;" v-if="activeItem === 'Dashboard'">
-          <!-- Statistics Cards Row -->
-          <div class="row q-col-gutter-md q-mb-lg">
-            <div class="col-12 col-sm-6 col-md-3" v-for="stat in stats" :key="stat.title">
-              <q-card class="stat-card q-pa-md">
+          <!-- Statistics Cards Row - Draggable -->
+          <div class="row q-col-gutter-md q-mb-lg" ref="statsContainer">
+            <div
+              v-for="stat in stats"
+              :key="stat.title"
+              class="col-12 col-sm-6 col-md-3"
+              :data-stat-id="stat.title"
+            >
+              <q-card class="stat-card q-pa-md draggable-stat-card">
                 <q-card-section class="q-pa-md">
                   <div class="row items-center no-wrap">
                     <div class="col">
@@ -279,6 +298,11 @@
           <ReportsPage />
         </q-page>
         
+        <!-- Calendar Page -->
+        <q-page style="background: transparent;" v-else-if="activeItem === 'Calendar'">
+          <CalendarPage />
+        </q-page>
+        
         <!-- Other Pages Placeholder -->
         <q-page class="q-pa-lg" style="background: transparent;" v-else>
           <div class="text-center q-mt-xl">
@@ -289,6 +313,13 @@
         </q-page>
       </q-page-container>
     </q-layout>
+
+    <!-- Command Palette -->
+    <CommandPalette
+      v-model="showCommandPalette"
+      ref="commandPalette"
+      @navigate="handleCommandNavigation"
+    />
 
     <!-- Add User Dialog -->
     <q-dialog v-model="showAddUserDialog" class="modern-dialog">
@@ -419,13 +450,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useQuasar } from 'quasar'
 import NotificationCenter from './components/NotificationCenter.vue'
 import AuthModal from './components/AuthModal.vue'
 import UsersPage from './components/UsersPage.vue'
 import SettingsPage from './components/SettingsPage.vue'
 import ReportsPage from './components/ReportsPage.vue'
+import CalendarPage from './components/CalendarPage.vue'
+import CommandPalette from './components/CommandPalette.vue'
 import { supabase } from './lib/supabase'
 
 const $q = useQuasar()
@@ -435,8 +468,10 @@ const activeItem = ref('Dashboard')
 const showAddUserDialog = ref(false)
 const showSendNotificationDialog = ref(false)
 const sendingNotification = ref(false)
+const showCommandPalette = ref(false)
 const user = ref({ email: 'demo@example.com', id: 'demo-user' })
 const authModal = ref(null)
+const commandPalette = ref(null)
 
 const newUser = ref({
   name: '',
@@ -464,15 +499,16 @@ const menuItems = [
   { label: 'Dashboard', icon: 'dashboard' },
   { label: 'Users', icon: 'people' },
   { label: 'Reports', icon: 'assessment' },
+  { label: 'Calendar', icon: 'calendar_month' },
   { label: 'Settings', icon: 'settings' },
 ]
 
-const stats = [
+const stats = ref([
   { title: 'Total Users', value: '2,543', icon: 'people', color: 'primary', change: '+12.5%' },
   { title: 'Active Users', value: '2,234', icon: 'online_prediction', color: 'positive', change: '+8.2%' },
   { title: 'Revenue', value: '$12,345', icon: 'monetization_on', color: 'accent', change: '+23.1%' },
   { title: 'Growth Rate', value: '+15.3%', icon: 'trending_up', color: 'secondary', change: '+5.7%' }
-]
+])
 
 const columns = [
   { name: 'name', required: true, label: 'Name', align: 'left', field: 'name', sortable: true },
@@ -503,6 +539,11 @@ const toggleLeftDrawer = () => {
 
 const setActiveItem = (item: string) => {
   activeItem.value = item
+}
+
+const handleCommandNavigation = (page: string) => {
+  activeItem.value = page
+  showCommandPalette.value = false
 }
 
 const checkAuthBeforeShow = async () => {
@@ -592,6 +633,24 @@ const exportReport = () => {
     icon: 'download',
     timeout: 2000
   })
+}
+
+// Drag and Drop Helper
+const statsContainer = ref<HTMLElement | null>(null)
+
+const getDragAfterElement = (container: HTMLElement, x: number) => {
+  const draggableElements = [...container.querySelectorAll('.draggable-stat-card:not(.dragging)')] as HTMLElement[]
+  
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect()
+    const offset = x - box.left - box.width / 2
+    
+    if (offset < 0 && offset > closest.offset) {
+      return { offset, element: child }
+    } else {
+      return closest
+    }
+  }, { offset: Number.NEGATIVE_INFINITY, element: null as HTMLElement | null }).element
 }
 
 const sendGlobalNotification = async () => {
@@ -701,6 +760,62 @@ const checkAuthStatus = async () => {
 
 onMounted(() => {
   checkAuthStatus()
+  
+  // Initialize drag and drop for stats cards
+  setTimeout(() => {
+    if (statsContainer.value) {
+      const container = statsContainer.value
+      const cards = container.querySelectorAll('.draggable-stat-card')
+      
+      cards.forEach((card) => {
+        ;(card as HTMLElement).setAttribute('draggable', 'true')
+        
+        card.addEventListener('dragstart', (e: Event) => {
+          const dragEvent = e as DragEvent
+          if (!dragEvent.dataTransfer) return
+          dragEvent.dataTransfer.effectAllowed = 'move'
+          dragEvent.dataTransfer.setData('text/html', (e.target as HTMLElement).outerHTML)
+          ;(card as HTMLElement).classList.add('dragging')
+        })
+        
+        card.addEventListener('dragend', () => {
+          ;(card as HTMLElement).classList.remove('dragging')
+        })
+        
+        card.addEventListener('dragover', (e: Event) => {
+          const dragEvent = e as DragEvent
+          dragEvent.preventDefault()
+          if (!dragEvent.dataTransfer) return
+          dragEvent.dataTransfer.dropEffect = 'move'
+          const afterElement = getDragAfterElement(container, dragEvent.clientX)
+          const dragging = document.querySelector('.dragging') as HTMLElement
+          if (afterElement == null && dragging) {
+            container.appendChild(dragging)
+          } else if (dragging && afterElement) {
+            container.insertBefore(dragging, afterElement)
+          }
+        })
+        
+        card.addEventListener('drop', (e: Event) => {
+          e.preventDefault()
+        })
+      })
+    }
+  }, 100)
+  
+  // Keyboard shortcut for command palette
+  const handleKeyboardShortcut = (e: KeyboardEvent) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault()
+      showCommandPalette.value = !showCommandPalette.value
+    }
+  }
+  
+  window.addEventListener('keydown', handleKeyboardShortcut)
+  
+  onUnmounted(() => {
+    window.removeEventListener('keydown', handleKeyboardShortcut)
+  })
   
   $q.notify({
     type: 'positive',

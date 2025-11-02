@@ -66,7 +66,10 @@ export function useNotifications() {
 
   const enablePushNotifications = () => {
     // Placeholder for push notification logic
-    console.log('Push notifications enabled')
+    // In production, remove console.log or use proper logging service
+    if (import.meta.env.DEV) {
+      console.log('Push notifications enabled')
+    }
   }
 
   const sendTestNotification = () => {
